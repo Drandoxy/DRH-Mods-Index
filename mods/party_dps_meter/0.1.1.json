@@ -1,0 +1,17 @@
+{
+  "id": "party_dps_meter",
+  "name": "Party DPS Meter",
+  "version": "0.1.1",
+  "author": "Drandox",
+  "description": "Shows ranked party damage, percentage of total damage, and DPS.",
+  "longDescription": "Ranks party members by total enemy damage and shows each player's damage share and DPS. DPS averages five-second windows that start with an enemy hit. Damage to scenery is excluded.\r\n\r\nDrag the meter to move it or drag a bottom corner to resize it. The mod saves its layout. **Enable DPS meter** in Settings turns tracking and display on or off. Turning it off clears the current totals. Tracking resumes from zero when enabled again.\r\n\r\n[Dungeon Minimap](https://github.com/Drandoxy/DRH-Mod-Dungeon-Minimap) is optional and uses matching player colors.",
+  "api": "1.4.0",
+  "drh": "18",
+  "uses": [
+    "extends"
+  ],
+  "url": "https://github.com/Drandoxy/DRH-Mod-Party-DPS-Meter/releases/download/v0.1.1/party_dps_meter-0.1.1.zip",
+  "size": 20600,
+  "sha256": "13c0fc4a3c11630f2be6c06d9517e4b1e573b5f95728a706d2870e2a032d3517",
+  "source": "https://github.com/Drandoxy/DRH-Mod-Party-DPS-Meter"
+}
