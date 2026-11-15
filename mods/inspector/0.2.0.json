@@ -1,0 +1,17 @@
+{
+  "id": "inspector",
+  "name": "Inspector",
+  "version": "0.2.0",
+  "author": "Tutez",
+  "description": "Shows the game's raw values as it runs: the last monster or prop hovered, game states, objects and server messages.",
+  "longDescription": "Shows the game's raw values as it runs: those of the last monster or prop under the cursor, the game's states, its objects and what the server sends. Technical and unpolished, for the curious and for modders.\n\nF7 shows or hides the panel, F5 freezes it, F9 pins the monster or prop it shows, F10 saves it to a file in the mod's data folder. The keys can be changed in the game's settings, under CONTROLS.",
+  "api": "1.3",
+  "drh": "16-18",
+  "uses": [
+    "extends"
+  ],
+  "url": "https://github.com/Tutez64/DRH-Mod-Inspector/releases/download/v0.2.0/inspector-0.2.0.zip",
+  "size": 18478,
+  "sha256": "856ac9477e707f0cd474a6c8860ef23a5d37d74c01c3f9230dd2cd2c9aaa9bcc",
+  "source": "https://github.com/Tutez64/DRH-Mod-Inspector"
+}
