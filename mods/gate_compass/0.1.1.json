@@ -1,0 +1,17 @@
+{
+  "id": "gate_compass",
+  "name": "Gate Compass",
+  "version": "0.1.1",
+  "author": "Drandox",
+  "description": "A movable compass that guides your hero to the dungeon exit.",
+  "longDescription": "The compass appears when the dungeon opens. Follow its arrow toward the exit room once a route is available. Inside the room, it guides you toward the gate, including when the gate is closed. Boss rooms that finish on defeat show **Defeat the Boss**.\r\n\r\nDrag the compass to move it or drag its bottom-right handle to resize it. Its position and size are saved. Turn it off in the mod settings to stop route updates.",
+  "api": "1.4.0",
+  "drh": "18",
+  "uses": [
+    "extends"
+  ],
+  "url": "https://github.com/Drandoxy/DRH-Mod-Gate-Compass/releases/download/v0.1.1/gate_compass-0.1.1.zip",
+  "size": 13108,
+  "sha256": "9bd95bfec5d55d6695872fbdd2acaac45ca17bc70abbfb7d8a4eb26d92ec5d4c",
+  "source": "https://github.com/Drandoxy/DRH-Mod-Gate-Compass"
+}
