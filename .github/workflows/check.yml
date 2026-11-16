@@ -39,14 +39,17 @@ jobs:
       - name: Check the entries
         env:
           APPIMAGE_EXTRACT_AND_RUN: 1
+          # The branch's head before a push, empty on any other event.
+          BEFORE_SHA: ${{ github.event.action == 'synchronize' && github.event.before || '' }}
           REPORT: ${{ runner.temp }}/report/report.md
-        run: python3 .github/scripts/check_pull_request.py "$RUNNER_TEMP/drhl.AppImage" "$(git rev-parse HEAD^1)"
+          PUSH_REPORT: ${{ runner.temp }}/report/push.md
+        run: python3 .github/scripts/check_pull_request.py "$RUNNER_TEMP/drhl.AppImage" "$(git rev-parse HEAD^1)" "$BEFORE_SHA"
 
-      # For the Comment workflow, which posts it on the pull request: this run cannot.
+      # For the Comment workflow, which posts them on the pull request: this run cannot.
       - if: always()
         uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
           name: report
-          path: ${{ runner.temp }}/report/report.md
+          path: ${{ runner.temp }}/report/
           if-no-files-found: ignore
           retention-days: 7

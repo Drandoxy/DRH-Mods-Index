@@ -1,6 +1,7 @@
 # Posts the Check workflow's report on its pull request, as one comment kept up
-# to date. Runs on `workflow_run`, from master with a write token: it never runs
-# the pull request's code, and posts its report only as text.
+# to date, and after a push what that push changed, as a comment of its own.
+# Runs on `workflow_run`, from master with a write token: it never runs the pull
+# request's code, and posts its reports only as text.
 name: Comment
 
 on:
@@ -33,4 +34,5 @@ jobs:
           RUN_URL: ${{ github.event.workflow_run.html_url }}
           CONCLUSION: ${{ github.event.workflow_run.conclusion }}
           REPORT: ${{ runner.temp }}/report/report.md
+          PUSH_REPORT: ${{ runner.temp }}/report/push.md
         run: python3 .github/scripts/comment_report.py
