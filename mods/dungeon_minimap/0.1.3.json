@@ -1,0 +1,17 @@
+{
+  "id": "dungeon_minimap",
+  "name": "Dungeon Minimap",
+  "version": "0.1.3",
+  "author": "Drandox",
+  "description": "A zoomable dungeon map with walls, chests, party markers, and gold and XP counters.",
+  "longDescription": "A zoomable map with dungeon-specific palettes, walls, purple breakable-wall markers, chests, and party portraits. The footer shows gold and XP collected during the run.\r\n\r\nUse **- / +** to zoom. At higher zoom, the map follows you. Drag inside the map to look around, or drag the header to move the panel. Drag a bottom corner to resize. Click the lock beside the zoom buttons to resize width and height independently. At 1x zoom, the whole floor fits the panel without stretching. The mod remembers your layout, zoom, and lock setting. Use **Reset minimap size and location** in Settings to restore the default panel size and position.\r\n\r\nExit colors follow Xk's Minimap: orange for a trigger, purple for enemy kills, cyan for a breakable blocker, green for open, red for closed, and grey for unknown.\r\n\r\nPress **Ctrl + Shift + M** to turn the map on or off. You can rebind it in Settings → Controls. Turning it off releases the map graphics and stops updates. The mod remembers whether it was on.\r\n\r\nBased on [Xk's Minimap](https://github.com/Xkaka505/DRH-Mod-Minimap). Use one minimap mod at a time. This mod can run alongside [Party DPS Meter](https://github.com/Drandoxy/DRH-Mod-Party-DPS-Meter), which uses the same player colors.",
+  "api": "1.4.0",
+  "drh": "18",
+  "uses": [
+    "extends"
+  ],
+  "url": "https://github.com/Drandoxy/DRH-Mod-Dungeon-Minimap/releases/download/v0.1.3/dungeon_minimap-0.1.3.zip",
+  "size": 46134,
+  "sha256": "6f80186ae6396da2b9faa1f2e278d6e0017b73280c5458a6d0aaeb45e5a047ee",
+  "source": "https://github.com/Drandoxy/DRH-Mod-Dungeon-Minimap"
+}
