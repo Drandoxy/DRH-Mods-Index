@@ -1,7 +1,7 @@
 {
   "id": "auto_dungeon_loot_manager",
   "name": "Auto Dungeon / Loot Manager",
-  "version": "0.2.16",
+  "version": "0.2.17",
   "author": "Drandox",
   "description": "Manage dungeon loot and automatically continue or restart, with a countdown and optional animation skipping.",
   "longDescription": "Manage dungeon rewards and optionally continue or restart after the results.\r\n\r\n- Adds a native Restart button to the exit menu and a second button to the results screen.\r\n- Default Next button chooses Next or Restart as the main results button and the automatic action.\r\n- Auto Next / Restart waits 0–10 seconds after rewards are handled; the default delay is 6 seconds. Manual Next, Restart or Exit cancels it for that run.\r\n- Automatically handle loot keeps or discards chest types using your saved rules. With it off, choose loot manually; the timer waits until all reward dialogs close.\r\n- Skip loot and results animations speeds up results counting and loot reveals. The dungeon victory animation plays normally.\r\n- Ctrl + Shift + R restarts the current dungeon. The shortcut is registered through the Mod API and appears in Settings → Controls.\r\n- Settings → Mods contains the options; changes save automatically. The previous Friends Only setting is kept on re-entry.\r\n\r\nBased on Danny's [Quick Dungeon Restart](https://github.com/rendable/DRH-Mod-Quick-Dungeon-Restart) and [Instant Victory Reveal](https://github.com/rendable/DRH-Mod-Instant-Victory-Reveal), and iClawSuit's [Summary Chest Rules](https://github.com/clawsuit/DRH-Mod-SummaryChestRules). Disable those three mods when using Auto Dungeon / Loot Manager to avoid competing summary handlers.",
@@ -10,8 +10,8 @@
   "uses": [
     "extends"
   ],
-  "url": "https://github.com/Drandoxy/DRH-Mod-Auto-Dungeon-Loot-Manager/releases/download/v0.2.16/auto_dungeon_loot_manager-0.2.16.zip",
-  "size": 19538,
-  "sha256": "80238dff05619a83efeeb80addb4e7f4ac1ec480ae947de1dc838eb7320def82",
+  "url": "https://github.com/Drandoxy/DRH-Mod-Auto-Dungeon-Loot-Manager/releases/download/v0.2.17/auto_dungeon_loot_manager-0.2.17.zip",
+  "size": 19700,
+  "sha256": "55e71be7802cf478405e110fd6c357a8cdd266e1f095bd5f95cde6bec9341331",
   "source": "https://github.com/Drandoxy/DRH-Mod-Auto-Dungeon-Loot-Manager"
 }
