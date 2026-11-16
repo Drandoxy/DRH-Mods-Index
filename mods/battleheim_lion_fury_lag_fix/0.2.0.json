@@ -1,0 +1,17 @@
+{
+  "id": "battleheim_lion_fury_lag_fix",
+  "name": "Battleheim Lion Fury Lag Fix",
+  "version": "0.2.0",
+  "author": "Qwettque",
+  "description": "Removes the Lion Fury animation that lags the game, with an optional static red tint.",
+  "longDescription": "## What it does\n\nLion Fury (Battlefury) normally plays a large animated effect around the character wearing it, and that effect is what makes the game stutter. This mod stops the game from loading it at all, so the lag cannot happen.\n\nThe buff itself is unchanged: same duration, same bonuses, same everything. It applies to every character with the buff, yours and other players'.\n\n## The option\n\nIn the game's settings menu, under **Battleheim Lion Fury Lag Fix**, there is one option:\n\n- **Red tint** on (default): the character turns solid red while Lion Fury is active.\n- **Red tint** off: nothing is drawn on the character.\n\nYou can change it at any time, in town or during a dungeon.",
+  "api": "1.4",
+  "drh": "18",
+  "uses": [
+    "extends"
+  ],
+  "url": "https://github.com/antonioparadiso/DRH-Mod-Battleheim-Lion-Fury-Lag-Fix/releases/download/v0.2.0/battleheim_lion_fury_lag_fix-0.2.0.zip",
+  "size": 4154,
+  "sha256": "6476df5a6047829d71daefbd21c6953b7fe69342ae90ed231f62bca01cdb7fbe",
+  "source": "https://github.com/antonioparadiso/DRH-Mod-Battleheim-Lion-Fury-Lag-Fix"
+}
