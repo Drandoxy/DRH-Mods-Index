@@ -1,0 +1,17 @@
+{
+  "id": "weapon_modifiers_in_inventory_preview",
+  "name": "Weapon Modifiers in Inventory Preview",
+  "version": "0.2.5",
+  "author": "Qwettque",
+  "description": "Displays weapon levels and modifier icons on inventory cards and equipped weapon slots.",
+  "longDescription": "## Features\n\n- Shows each weapon's required level and its modifier icons and levels on inventory cards.\n- Places the level at the upper-left and centers modifier icons along the bottom of each card.\n- Shows the same information on the three equipped weapon slots at the bottom of the inventory/store screen.\n- Includes the legendary modifier icon.\n- Keeps inventory badges aligned when dynamic rarity backgrounds are enabled.\n- Refreshes weapon cards and equipped slots only while the town inventory/store screen is open.\n\n## Credits and Acknowledgments\n\nA special thanks goes to **Moskito**: the brilliant idea behind this addition stems from his work and his *Moskito-mfqol* mod. Thank you for the inspiration!",
+  "api": "1.5",
+  "drh": "18",
+  "uses": [
+    "extends"
+  ],
+  "url": "https://github.com/antonioparadiso/DRH-Mod-Weapon-Modifiers-in-Inventory-Preview/releases/download/v0.2.5/weapon_modifiers_in_inventory_preview-0.2.5.zip",
+  "size": 5376,
+  "sha256": "f2fdfae6f8bf4542b44c3d5c31e4bf182ee9011c48c1ac9821f79e7f86592a32",
+  "source": "https://github.com/antonioparadiso/DRH-Mod-Weapon-Modifiers-in-Inventory-Preview"
+}
