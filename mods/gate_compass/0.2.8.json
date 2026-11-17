@@ -1,0 +1,17 @@
+{
+  "id": "gate_compass",
+  "name": "Gate Compass",
+  "version": "0.2.8",
+  "author": "Drandox",
+  "description": "Directions to the dungeon gate with 2D and ground compasses and an optional glowing Pathfinder.",
+  "longDescription": "Find your way to the dungeon exit with **Gate Compass**. Switch **2D**, **3D**, and **Pathfinder** independently in the floating settings panel. All three can run together. **Smooth Compass** is enabled by default, easing turns in about 0.3 seconds without a delay; disable it for instant turns.\r\n\r\nThe ground compass follows your hero with a ring and direction triangle that change color to contrast with the dungeon theme. Ring and triangle use the same tint and opacity; the original 2D arrow uses the same theme color. The optional lavender route appears on the ground beneath characters and foreground scenery. Both compass styles follow the same route direction, even when Pathfinder is hidden. The original 2D compass can be dragged and resized; ground-compass size is adjustable in Settings.\r\n\r\nRoutes are cached from the gate across the known map, with 36 starting routes per tile. The main spawn route is prioritized before the remaining cache warms. Routes account for walls, permanent obstacles, and traps; breakable props are ignored. New areas and changed obstacles update the cache. Pathfinder has softened edges and collision-checked rounded corners where space permits.\r\n\r\nInside the exit room, guidance leads to the gate even while it is closed. Boss-only rooms show **Defeat the boss** in Original 2D mode only. The compass hides during Settings, the exit dialog, and dungeon results.\r\n\r\nUnused visual buffers and generated textures are released when changing display modes. Routing stays active for the selected mode; disabling Gate Compass stops its updates and clears the cache.",
+  "api": "1.4.0",
+  "drh": "18",
+  "uses": [
+    "extends"
+  ],
+  "url": "https://github.com/Drandoxy/DRH-Mod-Gate-Compass/releases/download/v0.2.8/gate_compass-0.2.8.zip",
+  "size": 46751,
+  "sha256": "06b0054297abebe698eb9b23ed5b357b62cf9f0f411f513c10a84c8dfdeefbc7",
+  "source": "https://github.com/Drandoxy/DRH-Mod-Gate-Compass"
+}
