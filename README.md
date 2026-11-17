@@ -8,7 +8,7 @@ One file per version, `mods/<id>/<version>.json`. `--pack-mod` writes it with th
 
 ## Reading the index
 
-Every entry, generated on each merge: `https://tutez64.github.io/DRH-Mods-Index/index.json`. Its format is in [Index entry](https://github.com/Tutez64/Dungeon-Rampage-Haxe/blob/master/docs/modding.md#index-entry).
+Every entry, generated on each merge and once a day, with when GitHub says each version was published and its downloads: `https://tutez64.github.io/DRH-Mods-Index/index.json`. Its format is in [Index entry](https://github.com/Tutez64/Dungeon-Rampage-Haxe/blob/master/docs/modding.md#index-entry).
 
 ## License
 
