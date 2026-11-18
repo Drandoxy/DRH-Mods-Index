@@ -1,0 +1,17 @@
+{
+  "id": "gate_compass",
+  "name": "Gate Compass",
+  "description": "Directions to the dungeon gate with 2D and ground compasses and an optional glowing Pathfinder.",
+  "version": "0.3.4",
+  "author": "Drandox",
+  "api": "1.4.0",
+  "uses": [
+    "extends"
+  ],
+  "drh": "18",
+  "source": "https://github.com/Drandoxy/DRH-Mod-Gate-Compass",
+  "url": "https://github.com/Drandoxy/DRH-Mod-Gate-Compass/releases/download/v0.3.4/gate_compass-0.3.4.zip",
+  "size": 61749,
+  "sha256": "7e164fb0d99c4aed67ff4930b3096b7004be78d1801c5e4fd139a4d2c5822cce",
+  "longDescription": "Gate Compass points toward the dungeon gate with optional 2D, ground and Pathfinder guides.\n\n## Guides\n\n- **2D Compass**: a golden compass you can drag and resize.\n- **3D Compass**: a ground ring and direction triangle, coloured for the dungeon theme.\n- **Pathfinder**: a lavender path with collision-checked curves and fading ends.\n\nEnable each independently. Both compasses aim toward a far visible point along the route, with collision and trap checks, even when the line is hidden. Guidance accounts for walls, permanent obstacles and traps, while ignoring breakable props. Supported boss-only rooms show **Defeat the boss**.\n\n## Settings\n\nOpen **MODS > Gate Compass > Settings**, or press **Ctrl + Shift + G**.\n\n- Adjust circle/arrow sizes, stroke widths and arrow distance.\n- **Line length**: 300\u20132,200 world units; default 2,200.\n- **Line start distance**: 0\u2013500 world units from your hero; default 135. It is capped below line length so a section remains visible. This does not change the compass steering target.\n- **Smooth Compass** gives smooth turns; turn it off for immediate direction changes.\n- **Reset** restores defaults. Settings, positions and sizes save automatically.\n\nMove the settings panel by its title bar; its bottom-right corner resizes it. **Ctrl + Shift + Q** toggles navigation and releases its caches when off.\n\n## Low power mode\n\n**Low power mode** combines lighter drawing effects with smaller navigation work budgets and slower updates. The live route uses a reusable destination field, updates the nearby bend as you move, and animates close route changes after collision checks. Navigation pauses behind game menus and releases its resources when all guides are off or you leave."
+}
