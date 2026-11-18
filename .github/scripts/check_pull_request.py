@@ -131,14 +131,21 @@ def since_push(launcher, before, base, base_dir, before_dir, path, new, work):
     if old is None:
         return []
     lines = [f"## {path}", ""]
-    # Its zip is checked against the size and sha256 that entry gave, as any entry's.
-    subprocess.run([launcher, "--check-entry", old, str(base_dir), str(work)], cwd=before_dir, capture_output=True)
+    # Its zip is checked against the size and sha256 that entry gave, as any entry's. The entry is
+    # named by its whole path: run as an extracted AppImage, the launcher reads a relative one
+    # from the folder this script runs in, where the path holds the pull request's entry or none.
+    result = subprocess.run(
+        [launcher, "--check-entry", str(before_dir / old), str(base_dir), str(work)], capture_output=True, text=True
+    )
     version = Path(old).stem
     if not (work / "new").is_dir():
         redone = " A release redone under the same version replaces its zip." if old == path else ""
+        said = (result.stdout + result.stderr).replace(f"{before_dir}{os.sep}", "").strip()
         return lines + [
-            f"Before the push this pull request held `{old}`, whose zip is no longer the one it named: "
+            f"Before the push this pull request held `{old}`, whose zip could not be read again: "
             f"there is nothing to compare with.{redone} The diff against the last indexed version stands.",
+            "",
+            *fenced(said),
             "",
         ]
     text = diff_folders(work / "new", new)
