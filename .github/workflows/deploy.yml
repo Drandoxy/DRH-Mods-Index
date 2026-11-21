@@ -24,6 +24,8 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    outputs:
+      broken: ${{ steps.generate.outputs.broken }}
     steps:
       - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6
 
@@ -43,14 +45,31 @@ jobs:
       # The token is for GitHub's rate limit: the launcher reads each mod's
       # releases, for when a version was published and its downloads. What
       # GitHub did not answer is a note, shown as a warning; the index is
-      # deployed without it.
+      # deployed without it. A zip gone from its release, or changed since
+      # it was indexed, is a note too, and a broken version in broken.json,
+      # which the issues job reports. A launcher before 0.5 takes no third
+      # argument (exit code 2, its usage): run again without, and no issues.
+      # Drop that once 0.5 is out.
       - name: Generate index.json
+        id: generate
         env:
           APPIMAGE_EXTRACT_AND_RUN: 1
           GITHUB_TOKEN: ${{ github.token }}
         run: |
-          "$RUNNER_TEMP/drhl.AppImage" --build-index . _site/index.json | tee "$RUNNER_TEMP/build-index.txt"
+          launcher="$RUNNER_TEMP/drhl.AppImage"
+          status=0
+          "$launcher" --build-index . _site/index.json "$RUNNER_TEMP/broken.json" > "$RUNNER_TEMP/build-index.txt" || status=$?
+          if [ "$status" = 2 ]; then
+            "$launcher" --build-index . _site/index.json > "$RUNNER_TEMP/build-index.txt"
+          elif [ "$status" != 0 ]; then
+            cat "$RUNNER_TEMP/build-index.txt"
+            exit "$status"
+          fi
+          cat "$RUNNER_TEMP/build-index.txt"
           sed -n 's/^note: /::warning::/p' "$RUNNER_TEMP/build-index.txt"
+          if [ -f "$RUNNER_TEMP/broken.json" ]; then
+            echo "broken=$(jq -c . "$RUNNER_TEMP/broken.json")" >> "$GITHUB_OUTPUT"
+          fi
 
       - uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5.0.0
         with:
@@ -71,3 +90,22 @@ jobs:
     steps:
       - id: deployment
         uses: actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346 # v5.0.1
+
+  # An issue for each version that no longer installs, mentioning who can
+  # fix it, closed once it installs again or is withdrawn; after the deploy,
+  # so the index is deployed either way.
+  issues:
+    needs: [build, deploy]
+    if: needs.build.outputs.broken != ''
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      issues: write
+    steps:
+      - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6
+
+      - name: Open and close the issues
+        env:
+          GH_TOKEN: ${{ github.token }}
+          BROKEN: ${{ needs.build.outputs.broken }}
+        run: python3 .github/scripts/broken_zips.py
