@@ -1,0 +1,17 @@
+{
+  "id": "gate_compass",
+  "name": "Gate Compass",
+  "version": "0.3.7",
+  "author": "Drandox",
+  "description": "Directions to the dungeon gate with 2D and ground compasses and an optional glowing Pathfinder.",
+  "longDescription": "Gate Compass points toward the dungeon gate with optional 2D, ground and Pathfinder guides.\r\n\r\n## Guides\r\n\r\n- **2D Compass**: a golden compass you can drag and resize.\r\n- **3D Compass**: a ground ring and direction triangle, coloured for the dungeon theme.\r\n- **Pathfinder**: a lavender path with collision-checked curves and fading ends.\r\n\r\nEnable each independently. Both compasses aim toward a far visible point along the route, with collision and trap checks, even when the line is hidden. Guidance accounts for walls, permanent obstacles and traps, while ignoring breakable props. Supported boss-only rooms show **Defeat the boss**.\r\n\r\n## Settings\r\n\r\nUse the five switches in **MODS** for 2D, 3D, Pathfinder, smoothing and low power. For the seven appearance sliders, open **MODS > Gate Compass > Adjust appearance**, or press **Ctrl + Shift + G**.\r\n\r\n- Adjust circle/arrow sizes, stroke widths and arrow distance.\r\n- **Line length**: 300-2,200 world units; default 2,200.\r\n- **Line start distance**: 0-500 world units from your hero; default 135. It is capped below line length so a section remains visible. This does not change the compass steering target.\r\n- **Smooth Compass** gives smooth turns; turn it off for immediate direction changes.\r\n- **Reset** restores appearance defaults without moving the panel. Settings, positions and sizes save automatically.\r\n\r\nThe appearance panel defaults to the side. Move the appearance panel by its title bar; its bottom-right corner resizes it. **Ctrl + Shift + Q** toggles navigation and releases its caches when off.\r\n\r\n## Low power mode\r\n\r\n**Low power mode** combines lighter drawing effects with smaller navigation work budgets and slower updates. The live route uses a reusable destination field, updates the nearby bend as you move, and animates close route changes after collision checks. Navigation pauses behind game menus and releases its resources when all guides are off or you leave.",
+  "api": "1.4.0",
+  "drh": "18",
+  "uses": [
+    "extends"
+  ],
+  "url": "https://github.com/Drandoxy/DRH-Mod-Gate-Compass/releases/download/v0.3.7/gate_compass-0.3.7.zip",
+  "size": 61591,
+  "sha256": "5d2cc6bef1bb4cfaabba9e43a73fc8ad68b47903d1103c7816c0a21b04939adf",
+  "source": "https://github.com/Drandoxy/DRH-Mod-Gate-Compass"
+}
