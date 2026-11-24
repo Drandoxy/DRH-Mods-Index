@@ -13,6 +13,11 @@ in each entry's sources, against the entry the pull request held then, goes to
 the job summary too and to the file $PUSH_REPORT, posted as a comment of its
 own. A reviewer who read that entry reads this diff rather than the whole one.
 
+Beside $REPORT, meta.json tells the Comment workflow which pull request this
+run checked and the head it had before the push, so that a run is only ever
+posted on its own pull request, and a push whose report was never posted is
+said.
+
 Usage: check_pull_request.py <launcher> <base> [<before>]
 """
 import json
@@ -27,6 +32,9 @@ ENTRY_PATH = re.compile(r"mods/[a-z0-9_]+/[0-9]+\.[0-9]+\.[0-9]+\.json")
 MAX_DIFF_CHARS = 200_000
 # A comment holds 65,536 characters; the diffs share this much of it.
 COMMENT_DIFF_CHARS = 50_000
+# git's empty tree, which every repository knows: read as the source of the attributes, no
+# .gitattributes applies.
+EMPTY_TREE = "4b825dc642cb6eb9a060e54bf8d69288fbee4904"
 
 
 class Sources(str):
@@ -53,12 +61,16 @@ def git(*args):
     return subprocess.run(["git", *args], check=True, capture_output=True, text=True).stdout
 
 
-def labels():
+def pull_request():
+    """The pull request of the event this run is for; empty run by hand."""
     event_path = os.environ.get("GITHUB_EVENT_PATH")
     if not event_path:
-        return set()
-    event = json.loads(Path(event_path).read_text())
-    return {label["name"] for label in event.get("pull_request", {}).get("labels", [])}
+        return {}
+    return json.loads(Path(event_path).read_text()).get("pull_request", {})
+
+
+def labels():
+    return {label["name"] for label in pull_request().get("labels", [])}
 
 
 def check_yank(base, path):
@@ -85,17 +97,39 @@ def diff(work):
 
 
 def diff_folders(previous, new):
+    """Every file that differs, whole: the reviewer reads this in place of the zip, so the zip
+    must not choose what it shows. No rename: a file moved as it is, into src/ say, would be a
+    line naming it, without its content. No attribute but git's own: a .gitattributes in the zip
+    would have its sources shown as binary files that differ."""
     result = subprocess.run(
-        ["git", "diff", "--no-index", "--no-color", "--", str(previous), str(new)],
+        ["git", f"--attr-source={EMPTY_TREE}", "diff", "--no-index", "--no-color", "--no-renames", "--", str(previous), str(new)],
         capture_output=True,
-        text=True,
+        encoding="utf-8",
+        errors="replace",
     )
-    # git writes each path under its temporary folder, after a/ or b/, bare in a rename's lines:
-    # keep it relative to its version.
+    # 1 is git's answer when the folders differ. Anything else wrote no diff: stop there, since
+    # an empty diff would read as "nothing changed".
+    if result.returncode not in (0, 1):
+        sys.exit(f"git diff failed ({result.returncode}): {result.stderr.strip()}")
+    # git writes each path under its temporary folder, after a/ or b/: keep it relative to its
+    # version.
     text = result.stdout
     for root in (previous, new):
         text = text.replace(str(root) + "/", "/")
-    return re.sub(r"^(rename|copy) (from|to) /", r"\1 \2 ", text, flags=re.MULTILINE)
+    return text
+
+
+def unshown(text):
+    """The sources a diff names without showing them. git only says that a file it takes for
+    binary differs, and takes a file for binary as soon as it holds a NUL character, which the
+    game reads as the end of the source: the code before it would run unread."""
+    lines = []
+    for line in text.splitlines():
+        if line.startswith("Binary files ") and line.endswith(" differ"):
+            lowered = line.lower()
+            if "/src/" in lowered or ".hx" in lowered:
+                lines.append(line)
+    return lines
 
 
 def readable(commit):
@@ -182,6 +216,12 @@ def main():
     before = sys.argv[3] if len(sys.argv) > 3 else ""
     takeover = "takeover" in labels()
     problems, summary, pushed = [], ["# Index check", ""], []
+    comment = os.environ.get("REPORT")
+    if comment:
+        # First, so that it is there whatever happens next.
+        Path(comment).parent.mkdir(parents=True, exist_ok=True)
+        meta = {"pull": pull_request().get("number"), "before": before}
+        (Path(comment).parent / "meta.json").write_text(json.dumps(meta) + "\n")
     if before and not readable(before):
         pushed += [f"The head before the push, `{before[:12]}`, can no longer be read: the diff against the last indexed version stands.", ""]
         before = ""
@@ -222,7 +262,10 @@ def main():
                     problems.append(f"{path}: the launcher's checks failed")
                 summary += [f"## {path}", "", *fenced(output), ""]
                 if (work / "new").is_dir():
-                    summary.append(Sources(diff(work)))
+                    text = diff(work)
+                    for line in unshown(text):
+                        problems.append(f"{path}: a source is not shown in the diff, which only says: {line}")
+                    summary.append(Sources(text))
                     if before:
                         held = Path(temp) / f"held{number}"
                         held.mkdir()
@@ -244,10 +287,8 @@ def main():
             file.write(report)
     else:
         print(report)
-    comment = os.environ.get("REPORT")
     if comment:
         diffs = sum(isinstance(line, Sources) for line in summary)
-        Path(comment).parent.mkdir(parents=True, exist_ok=True)
         Path(comment).write_text(render(summary, COMMENT_DIFF_CHARS // max(1, diffs), "the whole diff is in the run's summary"))
     push_comment = os.environ.get("PUSH_REPORT")
     if push_comment and pushed:

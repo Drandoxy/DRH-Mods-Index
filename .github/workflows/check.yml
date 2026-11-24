@@ -4,6 +4,12 @@ name: Check
 
 on:
   pull_request:
+    # To master only: the index. A pull request to another branch would be
+    # checked by that branch's workflow and scripts, against its entries,
+    # and its run would still be a check named `check` on the same commit.
+    # A branch kept from before this line is not covered by it: delete a
+    # branch once it is merged.
+    branches: [master]
     types: [opened, synchronize, reopened, labeled, unlabeled]
 
 permissions:
