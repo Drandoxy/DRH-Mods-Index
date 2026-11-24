@@ -1,0 +1,17 @@
+{
+  "id": "ascension_helper",
+  "name": "Ascension Helper",
+  "version": "0.1.46",
+  "author": "Drandox",
+  "description": "Plan each hero's weapons and training; equips weapons and spends training points automatically on level-up.",
+  "longDescription": "Plan each hero's weapons and training once. As the hero levels up, the mod equips the planned weapons and spends new training points by your plan, in Town or in a dungeon.\r\n\r\n- **Weapon plan:** open Storage > Loot, select an owned hero and press **ASCENSION** beside Add Storage. Pick a slot (J, K or L) and choose one weapon for each required level. Filter by type, rarity and level; **Auto Select** fills the slot from the filtered list, preferring rarity, mana and estimated combat value. **None** clears the slot's plan. **Save** keeps it, **Cancel** discards your changes, and switching hero or closing Storage saves too.\r\n- **Automatic equipment:** after a confirmed level-up, the latest planned weapon at or below the hero's level is equipped with the game's normal equip request, one at a time. Manual changes at the same level are kept, missing weapons are reported, and nothing is equipped until a plan exists.\r\n- **Training plan:** open Training and press **ASCENSION**. Each stat row gets **-1 +1 -10 +10**: the plan is an ordered list of up to 300 points (75 per stat). Adding goes to the end of the list; removing takes that stat's last points, so the order is kept. **RESET** empties the plan, **SAVE** keeps it, **CANCEL** discards it, and switching hero saves.\r\n- **Automatic training:** whenever a hero has unspent training points, they are spent in plan order with the game's own training request, even in a dungeon right after a level-up. Points you already spent count toward the plan, and stats are never lowered. A message such as \"3 skill points added to Melee Power\" confirms each spend; if a loading screen hides it, it is shown again after loading.\r\n- **Inventory extras:** modifier icons show their star level, the selected slot is marked in cyan, and the planner works with a controller (D-pad to move, A to press or toggle a weapon).\r\n\r\n**Settings > Mods:** **Automatic equipment** and **Automatic training** (both on by default) turn the automatic parts off while keeping your plans.\r\n\r\n**Not compatible with Weapon Modifiers in Inventory Preview:** both mods draw weapon levels and modifier icons on the same inventory cards. Ascension Helper uses its own display for these, so enable only one of the two.\r\n\r\nPlans are stored only in this mod's local data folder, per account and hero. Nothing is uploaded. Game artwork and fonts are loaded from the installed game and are not included.",
+  "api": "1.5.0",
+  "drh": "18",
+  "uses": [
+    "extends"
+  ],
+  "url": "https://github.com/Drandoxy/DRH-Mod-Ascension-Helper/releases/download/v0.1.46/ascension_helper-0.1.46.zip",
+  "size": 63471,
+  "sha256": "dbcb373a6403806fc0e4204b6e55d3d638c4df3ef5a2f0640d5a480894a3ec2b",
+  "source": "https://github.com/Drandoxy/DRH-Mod-Ascension-Helper"
+}
