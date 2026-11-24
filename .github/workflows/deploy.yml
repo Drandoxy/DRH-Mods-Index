@@ -47,9 +47,7 @@ jobs:
       # GitHub did not answer is a note, shown as a warning; the index is
       # deployed without it. A zip gone from its release, or changed since
       # it was indexed, is a note too, and a broken version in broken.json,
-      # which the issues job reports. A launcher before 0.5 takes no third
-      # argument (exit code 2, its usage): run again without, and no issues.
-      # Drop that once 0.5 is out.
+      # which the issues job reports.
       - name: Generate index.json
         id: generate
         env:
@@ -59,13 +57,8 @@ jobs:
           launcher="$RUNNER_TEMP/drhl.AppImage"
           status=0
           "$launcher" --build-index . _site/index.json "$RUNNER_TEMP/broken.json" > "$RUNNER_TEMP/build-index.txt" || status=$?
-          if [ "$status" = 2 ]; then
-            "$launcher" --build-index . _site/index.json > "$RUNNER_TEMP/build-index.txt"
-          elif [ "$status" != 0 ]; then
-            cat "$RUNNER_TEMP/build-index.txt"
-            exit "$status"
-          fi
           cat "$RUNNER_TEMP/build-index.txt"
+          [ "$status" = 0 ] || exit "$status"
           sed -n 's/^note: /::warning::/p' "$RUNNER_TEMP/build-index.txt"
           if [ -f "$RUNNER_TEMP/broken.json" ]; then
             echo "broken=$(jq -c . "$RUNNER_TEMP/broken.json")" >> "$GITHUB_OUTPUT"
