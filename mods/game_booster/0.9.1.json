@@ -1,0 +1,17 @@
+{
+  "id": "game_booster",
+  "name": "Game Booster",
+  "version": "0.9.1",
+  "author": "Drandox",
+  "description": "Memory cleanup (like Floor Sweep, done differently), leftover cleanup and FPS Booster for smooth big fights.",
+  "longDescription": "Boosts your FPS and stops memory build-up over long gaming sessions. No more restarts because hidden leftovers keep eating up your free RAM.\n\n## What it does\n\n- **Memory cleanup:** similar to Floor Sweep, done differently: it waits until a floor or the town has finished loading and cleans only when enough has piled up, so it never gets in the way of loading or fights. It works on its own, and it gets along well with Floor Sweep: if you use Floor Sweep, Game Booster happily leaves this part to it.\n- **Leftover cleanup:** removes hidden leftovers and caches that keep piling up as you play, a nice extra next to Floor Sweep.\n- **FPS Booster** (Settings > Mods, on by default): makes skill effects and ultimates much lighter to draw, so big fights stay smooth. In tests the heaviest fights went from about 20-30 FPS to about 100 FPS. Turn it off for the full glow effects.\n- **Performance log** (Settings > Mods, off by default): one line a minute about how the game ran, handy for comparing or reporting lag. The README on GitHub explains how to read it.",
+  "api": "1.5.0",
+  "drh": "18",
+  "uses": [
+    "extends"
+  ],
+  "url": "https://github.com/Drandoxy/DRH-Mod-Game-Booster/releases/download/v0.9.1/game_booster-0.9.1.zip",
+  "size": 24012,
+  "sha256": "da8d1aa18f59f490cbfdf50982dbd48e04755d52994b1edd481803289f2ac59d",
+  "source": "https://github.com/Drandoxy/DRH-Mod-Game-Booster"
+}
