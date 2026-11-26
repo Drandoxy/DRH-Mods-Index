@@ -1,0 +1,17 @@
+{
+  "id": "game_booster",
+  "name": "Game Booster",
+  "version": "0.9.4",
+  "author": "Drandox",
+  "description": "Memory cleanup, leftover cleanup, freeing old map graphics, and FPS Booster for smooth big fights.",
+  "longDescription": "Boosts your FPS and stops memory build-up over long gaming sessions. No more restarts because hidden leftovers keep eating up your free RAM.\n\n## What it does\n\n- **Memory cleanup:** similar to Floor Sweep, done differently: it waits until a floor or the town has finished loading and cleans only when enough has piled up, so it never gets in the way of loading or fights. It works on its own, and it gets along well with Floor Sweep: if you use Floor Sweep, Game Booster happily leaves this part to it.\n- **Leftover cleanup:** removes hidden leftovers and caches that keep piling up as you play, a nice extra next to Floor Sweep.\n- **FPS Booster** (Settings > Mods, on by default): makes skill effects and ultimates much lighter to draw, so big fights stay smooth. In tests the heaviest fights went from about 20-30 FPS to about 100 FPS. Turn it off for the full glow effects.\n- **Free old map graphics** (Settings > Mods, on by default above 1.2 GB): farm for hours without going back to town. The game keeps the graphics of every map you have played for the whole session; once it uses more memory than the limit you choose (1.0 to 2.0 GB, or Never), the graphics of maps you have not played for 5 floors are freed. Maps you return to simply load again, like the first time.\n- **Performance log** (Settings > Mods, off by default): one line a minute about how the game ran, handy for comparing or reporting lag. The README on GitHub explains how to read it.",
+  "api": "1.5.0",
+  "drh": "18",
+  "uses": [
+    "extends"
+  ],
+  "url": "https://github.com/Drandoxy/DRH-Mod-Game-Booster/releases/download/v0.9.4/game_booster-0.9.4.zip",
+  "size": 27173,
+  "sha256": "dab20616868da1d6027d72175fbb5600227a6f3966cfd23170c7fb8bb90aa088",
+  "source": "https://github.com/Drandoxy/DRH-Mod-Game-Booster"
+}
